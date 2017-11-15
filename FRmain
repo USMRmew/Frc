@@ -1,0 +1,30 @@
+import edu.wpi.first.*;
+public class FRmain{
+public static void main(String args[]){
+
+	RobotDrive myDrive;
+	Joystick left, right;
+	
+    public void robotInit() {
+    	myDrive = new RobotDrive(1,2,3,4);
+    	left = new Joystick(1);
+    	right = new Joystick(2);
+    }
+
+    public void autonomousPeriodic() {
+
+    }
+
+    public void operatorControl() {
+    	while (isOperatorControl() && isEnabled()) {
+    		myDrive.tankDrive(left,  right);;
+    		Timer.delay(0.01);
+    	}
+    }
+
+
+
+
+
+
+}}
