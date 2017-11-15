@@ -6,18 +6,18 @@ public static void main(String args[]){
 	Joystick left, right;
 	
     public void robotInit() {
-    	myDrive = new RobotDrive(1,2,3,4);
+    	myDrive = new RobotDrive(1,2,3,4,5,6);
     	left = new Joystick(1);
     	right = new Joystick(2);
     }
 
     public void autonomousPeriodic() {
-
+//Non autonomous for now.
     }
 
-    public void operatorControl() {
+    public void operatorControl() {//when being controlled and not disabled.
     	while (isOperatorControl() && isEnabled()) {
-    		myDrive.tankDrive(left,  right);;
+    		myDrive.tankDrive(left,  right);;//applies speed designated by the L & R joysticks.
     		Timer.delay(0.01);
     	}
     }
