@@ -1,0 +1,58 @@
+package org.usfirst.frc.team6823.robot;
+
+import edu.wpi.first.wpilibj.SampleRobot;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
+public class tankDr{
+public static void main(String args[]){
+
+	RobotDrive myDrive;
+	Joystick leftStick = new Joystick(0);
+	
+    public void robotInit() {
+    	myDrive = new RobotDrive(1,2,3,4,5,6);
+    	left = new Joystick(1);
+    	right = new Joystick(2);
+    }
+
+public void autoControl() {
+	while (isOperatorControl()==false && isEnabled())	{
+		myRobot.mecanumDrive_Cartesian(x, y, rotation, gyroAngle); //Sample, to add based on measured dimensions.
+		//myRobot.exchange(tbd);
+        //while(distanceTraveled< distanceToLine){ (forward)	
+	}
+	}
+    }
+    	RobotDrive myRobot = new RobotDrive(1, 2, 3, 4); // class that handles basic drive
+												// operations
+	 // set to ID 1 in DriverStation, Using Port 0
+
+	public Robot() {
+		myRobot.setExpiration(0.1);
+	}
+
+    public void operatorControlTank() {//when being controlled and not disabled.
+    	while (isOperatorControl() && isEnabled()) {
+    		myDrive.tankDrive(left,  right);;//applies speed designated by the L & R joysticks.
+    		Timer.delay(0.001);
+    	}
+    }
+
+	public void operatorControlMc() {
+		myRobot.setSafetyEnabled(true);
+		while (isOperatorControl() && isEnabled()) {
+			myRobot.mecanumDrive_Cartesian(leftStick.getX(), leftStick.getY(), leftStick.getTwist(),0);
+			Timer.delay(0.0005); // wait for a motor update time
+
+		}
+	}
+}
+
+
+
+
+
+
+}}
