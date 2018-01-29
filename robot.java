@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.PWMSpeedController;
 
 /**
  * This is a demo program showing the use of the RobotDrive class, specifically
@@ -35,5 +38,12 @@ public class Robot extends IterativeRobot {
 		//m_myRobot.tankDrive(m_leftStick.getRawAxis(5)*1*m_leftStick.getRawAxis(2), m_leftStick.getRawAxis(1)*1*m_leftStick.getRawAxis(2));
 		//m_myRobot.tankDrive(m_leftStick.getRawAxis(5), m_leftStick.getRawAxis(1));
 		m_myRobot.arcadeDrive(m_leftStick.getRawAxis(1)*.75, m_leftStick.getRawAxis(2)*.75);
+	}
+	
+	public void autonomous() {
+		m_myRobot.arcadeDrive(1, 1);
+		Timer.delay(2);
+		m_myRobot.arcadeDrive(0, 0);
+		
 	}
 }
