@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		CameraServer.getInstance().startAutomaticCapture();
 		m_myRobot = new DifferentialDrive(new Spark(0), new Spark(1));
+		m_myAttach = new DifferentialDrive(new Spark(2), new Spark(3));
 		m_leftStick = new Joystick(0);
 	//	m_rightStick = new Joystick(1);
 	}
@@ -36,9 +37,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//m_myRobot.tankDrive(m_leftStick.getRawAxis(5)*1*m_leftStick.getRawAxis(2), m_leftStick.getRawAxis(1)*1*m_leftStick.getRawAxis(2));
-		//m_myRobot.tankDrive(m_leftStick.getRawAxis(5), m_leftStick.getRawAxis(1));
-		m_myRobot.arcadeDrive(m_leftStick.getRawAxis(1)*.75, m_leftStick.getRawAxis(2)*.75);
-		//hans
+		m_myRobot.tankDrive(m_leftStick.getRawAxis(5), m_leftStick.getRawAxis(1));
+		//m_myRobot.arcadeDrive(m_leftStick.getRawAxis(1)*.75, m_leftStick.getRawAxis(2)*.75);
+		m_myAttach.tankDrive(m_leftStick.getRawAxis(2)*-1, m_leftStick.getRawAxis(3));
 	}
 	
 	public void autonomous() {
