@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
 		//m_myRobot.tankDrive(m_leftStick.getRawAxis(5)*1*m_leftStick.getRawAxis(2), m_leftStick.getRawAxis(1)*1*m_leftStick.getRawAxis(2));
 		//m_myRobot.tankDrive(m_leftStick.getRawAxis(5), m_leftStick.getRawAxis(1));
 		m_myRobot.arcadeDrive(m_leftStick.getRawAxis(1)*.75, m_leftStick.getRawAxis(2)*.75);
+		//hans
 	}
 	
 	public void autonomous() {
