@@ -36,7 +36,7 @@ import edu.wpi.first.wpilibj.PWMSpeedController;
 * be much more difficult under this system. Use IterativeRobot or Command-Based
 * instead if you're new.
 */
-public class CurrentRobot extends IterativeRobot {
+public class Robot extends IterativeRobot {
 	private DifferentialDrive m_myRobot;
 	private Joystick m_leftStick;
 	//	private Joystick m_rightStick;
@@ -57,6 +57,27 @@ public class CurrentRobot extends IterativeRobot {
 			CameraServer.getInstance().startAutomaticCapture();
 		}
 
+		// Single-called method to begin the autonomous period for the robot
+		public void autonomousInit() {
+			// Autonomous command
+			if (autonomousCommand !=null) autonomousCommand.start();
+			// Restart autonomous timer and pattern command
+			timer.reset();
+			timer.start();
+		}
+		
+		// Autonomous method that is called from the autonomousInit method
+		public void autonomousPeriodic() {
+			if (timer.get() < 2.0) {
+				myRobot.drive(0.5, 0.0);
+			} else {
+				myRobot.drive(0.0, 0.0);
+			}
+		}	
+				
+		}
+	}
+		
 		public Robot() {
 			myRobot.setExpiration(0.1);
 		}
@@ -68,19 +89,4 @@ public class CurrentRobot extends IterativeRobot {
 			//m_myRobot.arcadeDrive(m_leftStick.getRawAxis(1)*.75, m_leftStick.getRawAxis(2)*.75);
 			m_myAttach.tankDrive(m_leftStick.getRawAxis(2)*-1, m_leftStick.getRawAxis(3));
 		}
-
-		// autonomous mode method, returns nothing
-		public void autonomous() {
-			m_myRobot.arcadeDrive(1, 1);
-			Timer.delay(2);
-			m_myRobot.arcadeDrive(0, 0);
-			public void autoControl() {
-				while (isOperatorControl()==false && isEnabled())	{
-					//myRobot.mecanumDrive_Cartesian(x, y, rotation, gyroAngle //Sample, to add based on measured dimensions.
-					//myRobot.exchange(tbd);
-					//while(distanceTraveled< distanceToLine){ (forward)
-				}
-			}
-			@Override
-			}
-		}
+	}
