@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3216.robot; // might need to change this number
+package org.usfirst.frc.team6823.robot;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Timer;
@@ -20,15 +20,16 @@ public class REVDigitBoard {
 	 * boolean getButtonB() : button B on the board
 	 * double getPot() : potentiometer value
 	 */
-	
+	//
 	I2C i2c;
 	DigitalInput buttonA, buttonB;
 	AnalogInput pot;
 	
 	byte[][] charreg;
-	Map charmap;
+	Map<Character, Integer> charmap;
 	
 	REVDigitBoard() {
+		System.out.println("REVDigitBoard.java has been called");
 		i2c = new I2C(Port.kMXP, 0x70);
 		buttonA = new DigitalInput(19);
 		buttonB = new DigitalInput(20);
@@ -135,9 +136,6 @@ public class REVDigitBoard {
 		
 		for (int i = 0; i < 4; i++) {
 			Integer g = (int) charmap.get(str.charAt(i));
-			if (g == null) {
-				g = 36;
-			}
 			charz[i] = g;
 		}
 		this._display(charz);
